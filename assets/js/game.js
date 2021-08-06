@@ -12,12 +12,11 @@ var playerMoney = 10;
 // You can also log multiple values at once like this
 console.log(playerName, playerAttack, playerHealth);
 
-// var enemyName = "Roborto";
-var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-var fight = function () {
+var fight = function (enemyName) {
+	console.log("enemyName parameter value : " + enemyName + " passed to the fight function.");
 	// Alert players that they're starting the round
 	window.alert("Welcome to Robot Gladiators!");
 	var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter FIGHT or SKIP TO CHOSE.");
@@ -71,4 +70,8 @@ var fight = function () {
 	}
 };
 
-// fight();
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
+for (var i = 0; i < enemyNames.length; i++) {
+	console.log("enemyNames[i]: " + enemyNames[i] + " before calling fight function.");
+	fight(enemyNames[i]);
+}
