@@ -165,10 +165,21 @@ var endGame = function () {
 	window.alert("The game has now ended. Let's see how you did!");
 
 	// if player is still alive, player wins!
-	if (playerInfo.health > 0) {
-		window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + ".");
+	var currentHighestScore = "currentHighestScore";
+	var highestScorePlayerName = "highestScorePlayerName";
+
+	var highestScore = localStorage.getItem(currentHighestScore);
+
+	if (highestScore === null) {
+		highestScore = 0;
+	}
+
+	if (playerInfo.money <= highestScore) {
+		window.alert(playerInfo.name + " did not beat the high score of " + highScore + ". Maybe next time!");
 	} else {
-		window.alert("You've lost your robot in battle!");
+		localStorage.setItem(currentHighestScore, playerInfo.money);
+		localStorage.setItem(highestScorePlayerName, playerInfo.name);
+		window.alert(playerInfo.name + " now has the high score of " + playerInfo.money + "!");
 	}
 
 	// ask player if they'd like to play again
@@ -259,17 +270,17 @@ var enemyInfo = [
 	{
 		name: "Roborto",
 		attack: randomNumber(10, 14),
-		health: randomNumber(40, 60);
+		health: randomNumber(40, 60),
 	},
 	{
 		name: "Amy Android",
 		attack: randomNumber(10, 14),
-		health: randomNumber(40, 60);
+		health: randomNumber(40, 60),
 	},
 	{
 		name: "Robo Trumble",
 		attack: randomNumber(10, 14),
-		health: randomNumber(40, 60);
+		health: randomNumber(40, 60),
 	},
 ];
 
